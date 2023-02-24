@@ -1,0 +1,43 @@
+import random
+
+# Define a list of quotes
+quotes = [
+    "The best way to predict the future is to invent it.",
+    "Stay hungry, stay foolish.",
+    "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",
+    "You miss 100% of the shots you don’t take.",
+    "If you want to live a happy life, tie it to a goal, not to people or things.",
+    "Don't let yesterday take up too much of today.",
+    "It does not matter how slowly you go as long as you do not stop."
+]
+
+# Define the quote generator function
+def generate_quotes(num_quotes, to_file=False):
+    """
+    Generates a specified number of random quotes from the quotes list
+    and outputs them to the console or to a file.
+    """
+    selected_quotes = random.sample(quotes, num_quotes)
+    
+    # Output the quotes to the console
+    print("Here are your random quotes:")
+    for quote in selected_quotes:
+        print(quote)
+    
+    # Output the quotes to a file if to_file=True
+    if to_file:
+        with open("random_quotes.txt", "w") as f:
+            for quote in selected_quotes:
+                f.write(quote + "\n")
+        print("Random quotes have been saved to random_quotes.txt")
+
+# Get user input for the number of quotes to generate
+num_quotes = int(input("How many quotes do you want to generate? "))
+
+# Ask the user if they want to output the quotes to a file
+to_file = input("Do you want to output the quotes to a file? (Y/N) ").lower()
+
+if to_file == "y":
+    generate_quotes(num_quotes, True)
+else:
+    generate_quotes(num_quotes)
